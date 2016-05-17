@@ -37,4 +37,4 @@ via a web browser. See [security warning](https://nette.org/security-warning).
 Requirements
 ------------
 
-PHP 5.6.4 or higher and [Composer](https://getcomposer.org/).
+PHP 5.6 or higher and [Composer](https://getcomposer.org/).
