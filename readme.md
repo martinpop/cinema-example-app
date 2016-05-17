@@ -15,7 +15,7 @@ Requirements are described in [composer.json](https://github.com/martinpop/cinem
 
 1. Download application and copy into your web server.
 2. Go to your application directory and run `composer install`
-3. Make directories `temp/` and `log/` writable.
+3. Make directories `temp/` and `log/` writable, file `app/model/data/cinema-example.sqlite` too.
 
 
 Web Server Setup
