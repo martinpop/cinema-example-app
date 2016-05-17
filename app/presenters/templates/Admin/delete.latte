@@ -1,0 +1,47 @@
+{block content}
+<section>
+	<div class="container">
+		<div class="row text-center">
+			<h1>Administrace - odebrání programu</h1>
+			
+			<a n:href="default" class="btn btn-primary btn-sm">
+				<span class="glyphicon glyphicon-circle-arrow-left"></span>
+				Zpět do administrace
+			</a>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<strong>{$cinemaData[cinema]}</strong>, {$cinemaData[street]}, {$cinemaData[postal_code]} {$cinemaData[city]}
+			</div>
+			
+			<div class="panel-body">
+				{form programDeleteForm}
+				<form id="{$form->getElementPrototype()->id}" action="{$form->getElementPrototype()->action}" method="{$form->getElementPrototype()->action}">
+					
+					<!-- Movie name -->		
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="alert alert-danger">
+								<span class="glyphicon glyphicon-exclamation-sign"></span>
+								<strong>Důležité:</strong> Opravdu chcete odebrat film <strong>{$program->movie->name}</strong> z programu?
+							</div>
+						</div>
+					</div>
+						
+					<!-- Buttons & hidden fields -->		
+					<div class="row">
+						<div class="form-group">
+							<div class="col-sm-12">
+								{input $form[delete]} {input $form[cancel]}
+								{input $form[do]}
+							</div>
+						</div>
+					</div>
+				</form>
+				{/form}
+			</div>
+		</div>
+	</div>
+</section>
+{/block}

@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<strong>{$cinemaData[cinema]}</strong>, {$cinemaData[street]}, {$cinemaData[postal_code]} {$cinemaData[city]}
+	</div>
+
+	<div class="panel-body">
+		{form cinemaProgramForm}
+		<form id="{$form->getElementPrototype()->id}" action="{$form->getElementPrototype()->action}" method="{$form->getElementPrototype()->action}">
+
+			<!-- Movie SelectBox -->
+			<div class="row">
+				<div class="form-group">
+					<div class="col-sm-12">
+						{var $input = $form[movie]}
+						{label $input /}
+						<br>
+						{input $input}
+					</div>
+					<div class="col-sm-12" n:if="$input->error">
+						<div class="alert alert-warning">{$input->error}</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Showtime CheckboxList -->
+			<div class="row">
+				<div class="form-group">
+					<div class="col-sm-12">
+						{var $input = $form[showtime]}
+						{label $input /}
+						<br>
+						{input $input}
+					</div>
+					<div class="col-sm-12" n:if="$input->error">
+						<div class="alert alert-warning">{$input->error}</div>
+					</div>
+				</div>						
+			</div>
+
+			<!-- Buttons & hidden fields -->		
+			<div class="row">
+				<div class="form-group">
+					<div class="col-sm-12">
+						{input $form[save]} {input $form[cancel]}
+						{input $form[do]}
+					</div>
+				</div>
+			</div>
+		</form>
+		{/form}
+	</div>
+</div>

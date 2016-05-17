@@ -1,0 +1,22 @@
+{block content}
+<section>
+	<div class="container">
+		<div class="row text-center">
+			<h1>Administrace - přidání filmu</h1>
+			
+			<a n:href="default" class="btn btn-primary btn-sm">
+				<span class="glyphicon glyphicon-circle-arrow-left"></span>
+				Zpět do administrace
+			</a>
+		</div>
+		
+		{if !$hasMovies}
+			<div class="alert alert-warning">
+				Pro vybrané kino není volný film k přiřazení.
+			</div>
+		{else}	
+			{include 'editForm.latte'}
+		{/if}
+	</div>
+</section>
+{/block}

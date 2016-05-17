@@ -1,0 +1,80 @@
+{block content}
+<section>
+	<div class="container">
+		<div class="row text-center">
+			<h1>Administrace</h1>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-4">
+				{control cinemaForm}
+			</div>
+			<div class="col-sm-4 text-left">
+				<p><strong>{$cinemaData[cinema]}</strong>, {$cinemaData[street]}, {$cinemaData[postal_code]} {$cinemaData[city]}</p>
+			</div>
+		</div>
+			
+		<div class="row">
+			<div class="col-sm-1">
+			<a class="btn btn-primary btn-sm" n:href="add">
+				<span class="glyphicon glyphicon-plus"></span>
+				Přidat film
+			</a>
+			</div>
+		</div>
+		
+		{if empty($cinemaProgram)}
+		<div class="row">
+			<div class="alert alert-info">
+				Pro vybrané kino není zadán program.
+			</div>
+		</div>
+		{else}
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="col-sm-3">
+							Film
+						</th>
+						<th colspan="{$showtimeCount}" class="col-sm-1">
+							Promítací čas
+						</th>
+						<th class="col-sm-2"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr n:foreach="$cinemaProgram as $program">
+						<th class="col-sm-3">{$program[program]->movie->name}</th>
+						<td class="col-sm-1 text-center" n:foreach="$program[showtime] as $showtime">
+							{$showtime ? $showtime : '-'}
+						</td>
+						<td class="col-sm-2 text-center">
+							<a n:href="edit, $program[program]->id" class="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-edit"></span>
+								Upravit
+							</a>
+							<a n:href="delete, $program[program]->id" class="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-remove"></span>
+								Odebrat
+							</a>
+						</td>
+					</tr>
+				</tbody>				
+			</table>	
+		</div>
+		{/if}
+	</div>
+</section>
+{/block}
+
+{block scripts}
+{include parent}
+<script type="text/javascript">	
+	$(document).ready(function() {
+		$('#cinema').on('change', function() {
+			window.location.href = {$redirectLink} + $(this).val();		
+		});
+	});
+</script>
+{/block}

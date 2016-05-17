@@ -1,0 +1,7 @@
+!.gitignore
+!.htaccess
+!web.config
+/log/
+/temp/
+/vendor/
+/nbproject/

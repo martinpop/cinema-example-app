@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Cinema Example Application.">
+    <meta name="author" content="Martin Pop">
+	
+	<title>{ifset title}{include title|striptags} | {/ifset}Cinema Example App</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+	{*<link rel="stylesheet" href="{$basePath}/css/cinema-example-app.css">*}
+	<link rel="stylesheet" href="{$basePath}/css/cinema-example-app.min.css">
+	
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	{block head}{/block}
+</head>
+
+<body>
+	
+	<!-- Navigation -->
+	<nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" n:href="Homepage:default">Program kin</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a n:href="Homepage:default"><span class="glyphicon glyphicon-home"></span></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" n:href="Program:default">Program</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" n:href="Admin:default">Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	
+	<!-- Noscript -->
+	<div class="container">
+		<noscript class="alert alert-warning">
+			Bez zapnutého JavaScriptu vám tyto stránky nebudou správně fungovat.
+		</noscript>
+	</div>
+	
+	<!-- Flash messages -->
+	<section n:if="$flashes">
+		<div class="container">
+			<div class="row">
+				<div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}" role="alert">
+					{$flash->message}
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Content block -->
+	{include content}
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row text-center">
+				<a href="https://github.com/martinpop/cinema-example-app/" class="btn btn-link" target="_blank">
+					project github
+					<span class="glyphicon glyphicon-share-alt"></span>
+				</a>
+			</div>
+		</div>
+	</footer>
+	
+	<!-- Waiting box -->
+	<div id="waiting-box" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<p class="text-center">
+					<strong>Data se načítají</strong>
+					<br>
+					<span class="fa fa-cog fa-spin fa-3x fa-fw"></span>
+				</p>
+			</div>
+		</div>
+	</div>
+	
+	{block scripts}
+	<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+	{*<script src="{$basePath}/js/nette.ajax.js"></script>*}
+	<script src="{$basePath}/js/nette.ajax.min.js"></script>
+	{*<script src="{$basePath}/js/cinema-example-app.js"></script>*}
+	<script src="{$basePath}/js/cinema-example-app.min.js"></script>
+	{/block}
+</body>
+</html>

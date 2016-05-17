@@ -1,0 +1,79 @@
+{block content}
+<section>
+	<div class="container">
+		<div class="row text-center">
+			<h1>Program kin</h1>
+		</div>
+		
+		<div class="row text-center">
+			<div class="col-sm-4">
+				{control cinemaForm}
+			</div>
+			<div class="col-sm-4 text-left">
+				{snippet address}
+				<p><strong>{$cinemaData[cinema]}</strong>, {$cinemaData[street]}, {$cinemaData[postal_code]} {$cinemaData[city]}</p>
+				{/snippet}
+			</div>
+		</div>
+			
+		{snippet program}
+		{if empty($cinemaProgram)}
+		<div class="row">
+			<div class="alert alert-info">
+				Pro vybrané kino není zadán program.
+			</div>
+		</div>
+		{else}
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="col-sm-3">
+							Film
+							<a class="fa fa-fw fa-sort link-underline-none ajax" href="{link sort! film}"></a>
+						</th>
+						<th colspan="{$showtimeCount}" class="col-sm-1">Promítací čas</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr n:foreach="$cinemaProgram as $program">
+						<th class="col-sm-3">{$program[program]->movie->name}</th>
+						<td class="col-sm-1 text-center" n:foreach="$program[showtime] as $showtime">
+							{$showtime ? $showtime : '-'}
+						</td>
+					</tr>
+				</tbody>				
+			</table>	
+		</div>
+		{/if}
+		{/snippet}
+	</div>
+</section>
+{/block}
+
+{block scripts}
+{include parent}
+<script type="text/javascript">	
+	$(document).ready(function() {
+		$('#cinema').on('change', function() {
+			$.nette.ajax({
+				url: {link changeProgram!},
+				type: 'GET',
+				data: { 'cinemaID': $(this).val() }
+			});			
+		});
+		
+		$(document).ajaxStart(function() {
+			$('#waiting-box').modal({
+				'backdrop': 'static',
+				'keyboard': false,
+				'show': true
+			});
+		});
+		
+		$(document).ajaxStop(function() {
+			$('#waiting-box').modal('hide');
+		});
+	});
+</script>
+{/block}

@@ -1,0 +1,216 @@
+@import "variables.less";
+@import "mixins.less";
+
+
+// Global Components
+
+body {
+	overflow-x: hidden;
+	.serif-font;
+}
+
+.text-muted {
+	color: @gray;
+}
+
+.text-primary {
+	color: @brand-primary;
+}
+
+p {
+	font-size: 14px;
+	line-height: 1.75;
+	padding-top: 5px;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+	outline: none;
+}
+
+a {
+	color: @brand-primary;
+}
+
+a:hover,
+a:focus,
+a:active,
+a.active {
+	color: darken(@brand-primary, 15%);
+}
+
+a.link-underline-none {
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {	
+	.heading-font;
+	font-weight: 700;
+	line-height: 2.0;
+}
+
+.table thead > tr > th {
+	vertical-align: middle;
+	color: @gray-lighter;
+	background-color: @gray-darkest;
+}
+
+.table tbody > tr > th {
+	vertical-align: middle;
+	background-color: @gray-lighter;
+}
+
+.table tbody > tr > td {
+    vertical-align: middle;
+}
+
+form > label.required, .input-required {
+    color: maroon;
+	&:after {
+		content: " *";
+	}
+}
+
+.bg-light-gray {
+	background-color: @gray-lighter;
+}
+
+.bg-darkest-gray {
+	background-color: @gray-darkest;
+}
+
+// Restyled Boostrap
+
+.row {
+	margin-bottom: 20px;
+}
+
+.alert {
+	margin-bottom: 0;
+}
+
+section {
+    padding-top: 20px;
+}
+
+.btn-primary {
+	.button-variant(white; @gray-darkest; @gray-darkest);
+	.serif-font;
+}
+
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn:active:focus {
+	outline: none;
+}
+
+// Custom Navigation Bar
+
+.navbar-default {
+	background-color: @gray-darkest;
+	border-color: transparent;
+	.navbar-brand {
+		color: @brand-primary;
+		.serif-font;
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+        	color: darken(@brand-primary, 10%);
+        }
+	}
+	.navbar-collapse {
+		border-color: fade(white, 2%);
+	}
+	.navbar-toggle {
+		background-color: @brand-primary;
+		border-color: @brand-primary;
+		.icon-bar {
+			background-color: @gray-darkest;
+		}
+		&:hover,
+		&:focus {
+			background-color: @brand-primary;
+		}
+	}
+    .nav {
+    	li {
+    		a {
+    			.heading-font;
+    			font-weight: 400;
+    			letter-spacing: 1px;
+    			color: @gray-lighter;
+    			&:hover,
+    			&:focus {
+    				color: @brand-primary;
+    				outline: none;
+    			}
+    		}
+    	}
+    }
+	.navbar-nav>.active>a {
+		border-radius: 0;
+		color: white;
+		background-color: @brand-primary;
+	}
+	.navbar-nav>.active>a:hover,
+	.navbar-nav>.active>a:focus {
+		color: white;
+		background-color: darken(@brand-primary, 10%);
+	}
+}
+
+@media(min-width:768px) {
+    .navbar-default {
+    	background-color: @gray-darkest;
+        padding: 0;
+        -webkit-transition: padding 0.3s;
+        -moz-transition: padding 0.3s;
+        transition: padding 0.3s;
+        border: none;
+	    .navbar-brand {
+	        font-size: 1.3em;
+	        -webkit-transition: all 0.3s;
+	        -moz-transition: all 0.3s;
+	        transition: all 0.3s;
+	    }
+		.navbar-nav>.active>a {
+			border-radius: 3px;
+		}
+    }
+    .navbar-default.navbar-shrink {
+    	background-color: @gray-darkest;
+        padding: 10px 0;
+		.navbar-brand {
+	        font-size: 1.5em;
+	    }    
+	}
+}
+
+// Highlight Color Customization
+
+::-moz-selection {
+    text-shadow: none;
+    background: @brand-primary;
+}
+
+::selection {
+    text-shadow: none;
+    background: @brand-primary;
+}
+
+img::selection {
+    background: transparent;
+}
+
+img::-moz-selection {
+    background: transparent;
+}
+
+body {
+    webkit-tap-highlight-color: @brand-primary;
+}
