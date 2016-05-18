@@ -2,7 +2,7 @@ Cinema Example App
 ==================
 
 Example MVP application in the [Nette Framework](https://nette.org/)
-with [jQuery](https://jquery.com/), [Bootstrap 3](http://getbootstrap.com/),
+with [SQLite database](https://www.sqlite.org/), [jQuery](https://jquery.com/), [Bootstrap 3](http://getbootstrap.com/),
 [Font Awesome](http://fontawesome.io/) and [Less.js](http://lesscss.org/).
 
 Live demo at [example.martinpop.cz](http://example.martinpop.cz/).
